@@ -12,3 +12,5 @@
 - 若要转换为mp4格式，直接使用命令：
   `ffmpeg -i final.ts -c copy -bsf:a aac_adtstoasc final.mp4`
 - 有问题欢迎直接linxzhan9@gmail.com
+
+- 声明：本计算机程序仅限个人使用，请勿传播利用；由此程序产生的商业纠纷或违法破坏活动与本人无关，特此声明。
