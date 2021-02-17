@@ -155,10 +155,13 @@ def preprocess(download_url, m3u8_file):
     return key_materials, ts_urls 
 
 
-def merge_ts(working_dir):
+def merge_ts(working_dir, ts_file):
     os.chdir(working_dir)
-    cmd = "cat *.ts > final.ts"
-    os.system(cmd)
+    ts_file_ordered = b' '.join(ts_file)
+    merge_cmd = "cat " + ts_file_ordered.decode() + " > final.ts"
+    os.system(merge_cmd)
+    convert_cmd = "ffmpeg -i video/final.ts -c copy -bsf:a aac_adtstoasc video/final.mp4"
+    os.system(convert_cmd)
 
 def wrap_up():
     clear()
@@ -170,7 +173,7 @@ def wrap_up():
     keys, tss = preprocess(download_url, m3u8_file)
     print(keys, len(tss))
     multi_download(download_url, tss, keys)
-    merge_ts("video/")
+    merge_ts("video/", tss)
 
 
 wrap_up()
