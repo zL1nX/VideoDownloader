@@ -160,7 +160,7 @@ def merge_ts(working_dir, ts_file):
     ts_file_ordered = b' '.join(ts_file)
     merge_cmd = "cat " + ts_file_ordered.decode() + " > final.ts"
     os.system(merge_cmd)
-    convert_cmd = "ffmpeg -i video/final.ts -c copy -bsf:a aac_adtstoasc video/final.mp4"
+    convert_cmd = "ffmpeg -i final.ts -c copy -bsf:a aac_adtstoasc final.mp4"
     os.system(convert_cmd)
 
 def wrap_up():
